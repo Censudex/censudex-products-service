@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+// El nombre del paquete que agrupa tus servicios y mensajes
+package products;
+
+// 1. El servicio que el API Gateway consumirá
+// (Los nombres de funciones deben coincidir con los del PDF)
+service ProductsService {
+  // RPC para Crear producto [cite: 65]
+  rpc CreateProduct(CreateProductRequest) returns (ProductResponse);
+
+  // RPC para Visualizar listado de productos [cite: 70]
+  rpc GetProducts(GetProductsRequest) returns (GetProductsResponse);
+
+  // RPC para Visualizar producto por identificador [cite: 76]
+  rpc GetProductById(GetProductByIdRequest) returns (ProductResponse);
+
+  // RPC para Editar producto [cite: 78]
+  rpc UpdateProduct(UpdateProductRequest) returns (ProductResponse);
+
+  // RPC para Eliminar producto (Soft Delete) [cite: 82]
+  rpc DeleteProduct(DeleteProductRequest) returns (ProductResponse);
+}
+
+// 2. El objeto principal de Producto (la respuesta)
+// Contiene los campos que se devuelven al cliente
+message Product {
+  string id = 1;          // UUID V4
+  string name = 2;
+  string description = 3;
+  float price = 4;
+  string category = 5;
+  string image_url = 6;     // URL de Cloudinary [cite: 75]
+  string status = 7;        // "activo" o "inactivo"
+}
+
+// 3. Mensajes para cada RPC (Requests y Responses)
+
+// --- Crear Producto ---
+message CreateProductRequest {
+  string name = 1;
+  string description = 2;
+  float price = 3;
+  string category = 4;
+  bytes image_data = 5; // El buffer del archivo de imagen
+  // Nota: El API Gateway debe leer el archivo y pasar los bytes aquí.
+}
+
+// --- Listar Productos ---
+message GetProductsRequest {
+  // Se pueden añadir campos de paginación o filtros aquí si se desea
+}
+
+message GetProductsResponse {
+  repeated Product products = 1; // Devuelve una lista de productos
+}
+
+// --- Obtener Producto por ID ---
+message GetProductByIdRequest {
+  string id = 1;
+}
+
+// --- Actualizar Producto ---
+message UpdateProductRequest {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  float price = 4;
+  string category = 5;
+  bytes new_image_data = 6; // Opcional: El buffer de la nueva imagen
+}
+
+// --- Eliminar Producto ---
+message DeleteProductRequest {
+  string id = 1;
+}
+
+// --- Respuesta Unificada ---
+message ProductResponse {
+  Product product = 1;
+}
