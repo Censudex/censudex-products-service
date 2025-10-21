@@ -43,13 +43,12 @@ message CreateProductRequest {
   string description = 2;
   float price = 3;
   string category = 4;
-  bytes image_data = 5; // El buffer del archivo de imagen
-  // Nota: El API Gateway debe leer el archivo y pasar los bytes aquí.
+  bytes image_data = 5; 
 }
 
 // --- Listar Productos ---
 message GetProductsRequest {
-  // Se pueden añadir campos de paginación o filtros aquí si se desea
+  // Añadir campos de paginación o filtros 
 }
 
 message GetProductsResponse {
@@ -68,7 +67,7 @@ message UpdateProductRequest {
   string description = 3;
   float price = 4;
   string category = 5;
-  bytes new_image_data = 6; // Opcional: El buffer de la nueva imagen
+  bytes new_image_data = 6; 
 }
 
 // --- Eliminar Producto ---
