@@ -29,6 +29,9 @@ export class Product {
 
   @Prop({ default: 'active' }) 
   status: string; 
+
+  @Prop()
+  createdAt: Date;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

@@ -1,17 +1,20 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose'; 
+import { MongooseModule } from '@nestjs/mongoose';
 import { ProductsController } from './products.controller';
 import { ProductsService } from './products.service';
-import { Product, ProductSchema } from './schemas/product.schema'; 
-import { CloudinaryModule } from '../cloudinary/cloudinary.module'; 
+import { Product, ProductSchema } from './schemas/product.schema';
+import { CloudinaryModule } from '../cloudinary/cloudinary.module';
+import { ProductsRepository } from './products.repository'; // <-- 1. Importa
 
 @Module({
   imports: [
-    // Configura el esquema de Producto en Mongoose
     MongooseModule.forFeature([{ name: Product.name, schema: ProductSchema }]),
-    CloudinaryModule, 
+    CloudinaryModule,
   ],
   controllers: [ProductsController],
-  providers: [ProductsService],
+  providers: [
+    ProductsService,
+    ProductsRepository, 
+  ],
 })
 export class ProductsModule {}

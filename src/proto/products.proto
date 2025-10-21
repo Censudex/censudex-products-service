@@ -32,6 +32,7 @@ message Product {
   string category = 5;
   string image_url = 6;     // URL de Cloudinary [cite: 75]
   string status = 7;        // "activo" o "inactivo"
+  string created_at = 8;    // Fecha de registro [cite: 75]
 }
 
 // 3. Mensajes para cada RPC (Requests y Responses)
@@ -76,6 +77,8 @@ message DeleteProductRequest {
 }
 
 // --- Respuesta Unificada ---
+// Usamos un solo tipo de respuesta para Create, GetById, Update y Delete
+// ya que todos devuelven el producto modificado o encontrado.
 message ProductResponse {
   Product product = 1;
 }
