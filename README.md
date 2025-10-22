@@ -54,7 +54,7 @@ Sigue estos pasos para levantar el microservicio localmente.
 
 ### 2. Clonar el Repositorio
 ```bash
-git clone [https://github.com/Censudex/censudex-products-service.git](https://github.com/Censudex/censudex-products-service.git)
+git clone https://github.com/Censudex/censudex-products-service.git
 cd censudex-products-service
 ```
 
