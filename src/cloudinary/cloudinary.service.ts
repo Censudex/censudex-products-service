@@ -5,9 +5,13 @@ import { UploadApiResponse } from 'cloudinary';
 
 @Injectable()
 /**
- * Servicio para manejar la integración con Cloudinary.
+ * Servicio para la gestión de operaciones con Cloudinary.
  */
 export class CloudinaryService {
+  /**
+   * Constructor para el servicio de Cloudinary.
+   * @param configService El servicio de configuración
+   */
   constructor(private configService: ConfigService) {
     cloudinary.config({
       cloud_name: this.configService.get<string>('CLOUDINARY_CLOUD_NAME'),
@@ -17,7 +21,7 @@ export class CloudinaryService {
   }
 
   /**
-   * Sube un buffer de imagen a Cloudinary
+   * Sube una imagen a Cloudinary.
    * @param imageBuffer El buffer de la imagen (bytes)
    * @returns La URL segura de la imagen subida
    */

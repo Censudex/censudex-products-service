@@ -5,9 +5,12 @@ import { v4 as uuidv4 } from 'uuid'; // Para generar UUID
 export type ProductDocument = Product & Document;
 
 /**
- * Esquema de Producto para MongoDB usando Mongoose y NestJS Schemas.
+ * Esquema de Mongoose para la colección de productos.
  */
 @Schema({ timestamps: true }) 
+/**
+ * Clase que representa un producto en la base de datos.
+ */
 export class Product {
   @Prop({ type: String, default: () => uuidv4() }) 
   _id: string;

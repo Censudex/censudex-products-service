@@ -6,6 +6,9 @@ import { Product, ProductSchema } from './schemas/product.schema';
 import { CloudinaryModule } from '../cloudinary/cloudinary.module';
 import { ProductsRepository } from './products.repository'; // <-- 1. Importa
 
+/**
+ * Módulo de productos para la gestión de productos en la aplicación.
+ */
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Product.name, schema: ProductSchema }]),
