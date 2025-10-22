@@ -8,7 +8,10 @@ import { Product, ProductDocument } from './schemas/product.schema';
  */
 @Injectable()
 export class ProductsRepository {
-  // Inyecta el modelo de Mongoose para productos
+  /**
+   * Inicializa una nueva instancia del repositorio de productos.
+   * @param productModel Modelo de producto de Mongoose
+   */
   constructor(
     @InjectModel(Product.name) private productModel: Model<ProductDocument>,
   ) {}
