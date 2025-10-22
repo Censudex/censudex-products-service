@@ -3,10 +3,10 @@ import { ConfigService } from '@nestjs/config';
 import { v2 as cloudinary } from 'cloudinary';
 import { UploadApiResponse } from 'cloudinary';
 
-@Injectable()
 /**
  * Servicio para la gestión de operaciones con Cloudinary.
  */
+@Injectable()
 export class CloudinaryService {
   /**
    * Constructor para el servicio de Cloudinary.
